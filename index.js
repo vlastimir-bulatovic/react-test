@@ -1,10 +1,26 @@
-class Listitem extends React.Component{
+class GetDate extends React.Component{//get local time 
+    render(){
+        return(
+            <p>Time : {new Date().toLocaleTimeString()}.</p>
+        );
+    }
+}
+
+class Item extends React.Component{// simple component
+    render(){
+        return(
+            <li>{this.props.name}</li>
+        );
+    }
+}
+
+class Listitem extends React.Component{//component that invoke component
     render(){
         return(
             <ul>
-                <li>Instagram</li>
-                <li>WhatsApp</li>
-                <li>Oculus</li>
+                <Item name="Instagram"/>
+                <Item name="Povrce"/>
+                <Item name="Babi lek" />      
             </ul>
         );
     }
@@ -20,7 +36,17 @@ class ShoppingList extends React.Component {
         );
     }
 }
+
+function newTime(){
+    ReactDOM.render(
+        <GetDate/>,
+        document.getElementById('time')
+    );
+}
+
+setInterval(newTime,1000);
+
 ReactDOM.render(
-    <ShoppingList name="Mark"/>,
-    document.getElementById('root')
+    <ShoppingList name="Vlastimir"/>,
+    document.getElementById('one')
 );
