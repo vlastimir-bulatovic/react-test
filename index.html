@@ -4,8 +4,48 @@
         <title>Test</title>
         <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
         <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
     </head>
     <body>
+        <div id="root">
 
+        </div>
+        <script type="text/babel">
+
+            class Item extends React.Component{
+                render(){
+                    return(
+                        <li>{this.props.name}</li>
+                    );
+                }
+            }
+
+            class Listitem extends React.Component{
+                render(){
+                    return(
+                        <ul>
+                            <Item name="Instagram"/>
+                            <Item name="Povrce"/>
+                            <Item name="Babi lek" />      
+                        </ul>
+                    );
+                }
+            }
+
+            class ShoppingList extends React.Component {
+                render() {
+                    return (
+                        <div className="shopping-list">
+                            <h1>Shopping List for {this.props.name}</h1>
+                            < Listitem/>
+                        </div>
+                    );
+                }
+            }
+            ReactDOM.render(
+                <ShoppingList name="Vlastimir"/>,
+                document.getElementById('root')
+            );
+        </script>
     </body>
 </html>
