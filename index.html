@@ -6,70 +6,14 @@
         <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
         <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
-    
     </head>
     <body>
         <div id="one">
-
         </div>
         <div id="time">
 
         </div>
         <script type="text/babel">
-
-            class GetDate extends React.Component{//get local time 
-                render(){
-                    return(
-                        <p>Time : {new Date().toLocaleTimeString()}.</p>
-                    );
-                }
-            }
-
-            class Item extends React.Component{// simple component
-                render(){
-                    return(
-                        <li>{this.props.name}</li>
-                    );
-                }
-            }
-
-            class Listitem extends React.Component{//component that invoke component
-                render(){
-                    return(
-                        <ul>
-                            <Item name="Instagram"/>
-                            <Item name="Povrce"/>
-                            <Item name="Babi lek" />      
-                        </ul>
-                    );
-                }
-            }
-
-            class ShoppingList extends React.Component {
-                render() {
-                    return (
-                        <div className="shopping-list">
-                            <h1>Shopping List for {this.props.name}</h1>
-                            < Listitem/>
-                        </div>
-                    );
-                }
-            }
-            
-            function newTime(){
-                ReactDOM.render(
-                    <GetDate/>,
-                    document.getElementById('time')
-                );
-            }
-            
-            setInterval(newTime,1000);
-
-            ReactDOM.render(
-                <ShoppingList name="Vlastimir"/>,
-                document.getElementById('one')
-            );
-
         </script>
     </body>
 </html>
