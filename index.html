@@ -8,12 +8,36 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
     </head>
     <body>
-        <div id="one">
+        <div id="example">
         </div>
-        <div id="time">
-
-        </div>
+        
         <script type="text/babel">
+             
+             var Comment = React.createClass({
+
+                 edit: function(){
+                     alert('Test');
+                 },
+
+                 remove: function(){
+                     alert('opet test');
+                 },
+                 render: function() {
+                     return(
+                        <div className= 'ime' >
+                            <div className="text" >Text plain</div>
+                            <button onClick={this.edit}>Edit</button>
+                            <button onClick={this.remove}>Remove</button>
+                        </div>
+                     )
+                 }
+             })
+
+             ReactDOM.render(
+                 <Comment/>,
+                 document.getElementById('example')
+             );
+
         </script>
     </body>
 </html>
