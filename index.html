@@ -12,98 +12,75 @@
         </div>
         
         <script type="text/babel">
-             
-            class Link extends React.Component{
+            
+            class LogedUser extends React.Component{
                 render(){
-                    return(
-                        <a href="#" onClick={this.props.prevent}>
-                            Prevet default
-                        </a>
-                    );
+                    return <h1>{this.props.text}</h1>
                 }
             }
 
-            class Button extends React.Component{
+            function Text (props){
+                const isLoged = props.isLogedIn;
+
+                if (isLoged) {
+                    return <LogedUser text="Welcome" />
+                }
+                return <LogedUser text="Please log in" />
+            }
+
+            class Btnlog extends React.Component{
                 render(){
                     return(
-                        <button onClick={this.props.action}>
-                            {this.props.name}
+                        <button onClick={this.props.loged}>
+                            {this.props.text}
                         </button>
-                    );
+                    )
                 }
             }
-
-            class Text extends React.Component{
-                render(){
-                    return(
-                        <p id="text">
-                            Text
-                        </p>
-                    );
-                }
-            }
-            class Toggle extends React.Component{
+            
+            class App extends React.Component{
                 constructor(props){
                     super(props);
 
-                    this.state = {
-                        isOn : true
-                    };
+                    this.state={logedIn : false};
 
-                    this.toggle = this.toggle.bind(this);
+                    this.handlerLogedIn = this.handlerLogedIn.bind(this);
+                    this.handlerLogedOut = this.handlerLogedOut.bind(this);
                 }
 
-                toggle() {
-                    this.setState(state => ({
-                        isOn: !state.isOn
-                    }));
+                handlerLogedIn(){
+                    this.setState(state => ({logedIn : true}));
+                }
+
+                handlerLogedOut (){
+                    this.setState(state => ({logedIn : false}))
                 }
 
                 render(){
+                    
+                    const isLog = this.state.logedIn;
+                    let button;
+
+                    
+                    if(isLog){
+                        button = <Btnlog loged={this.handlerLogedOut} text='log out'/>;
+                    }else{
+                        button = <Btnlog loged={this.handlerLogedIn} text='log in'/> ;
+                    }
+
                     return(
-                        <button onClick={this.toggle}>
-                            {this.state.isOn ? 'On' : 'Off'}    
-                        </button>
-                    );
-                }
-            }
-            class Comment extends React.Component{
-
-                logBtn = () => {
-                    console.log(this);
-                }
-
-                edit(){
-                    document.getElementById('text').innerHTML = 'promenjeno';
-                }
-
-                remove(){
-                    document.getElementById('text').innerHTML = '';
-                }
-                
-                clickLink(e){
-                    e.preventDefault();
-                    alert('Event for link prevented');
-                }
-                
-                render(){
-                    return(
-                        <div >
-                            <Button action={this.edit} name='edit' />
-                            <Button action={this.logBtn} name='remove'/>
-                            <Text />
-                            <Link prevent={this.clickLink} />
-                            <Toggle />
+                        <div>
+                            <Text isLogedIn={this.state.logedIn} />
+                            {button}
                         </div>
                     )
                 }
             }
 
             ReactDOM.render(
-                <Comment/>,
+                <App/>,
                 document.getElementById('example')
             );
-
         </script>
     </body>
 </html>
