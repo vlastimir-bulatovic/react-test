@@ -1,4 +1,4 @@
-class GetDate extends React.Component{//get local time 
+class GetDate extends React.Component{ //get local time 
     render(){
         return(
             <p>Time : {new Date().toLocaleTimeString()}.</p>
@@ -6,7 +6,7 @@ class GetDate extends React.Component{//get local time
     }
 }
 
-class Item extends React.Component{// simple component
+class Item extends React.Component{ // simple component
     render(){
         return(
             <li>{this.props.name}</li>
@@ -14,7 +14,7 @@ class Item extends React.Component{// simple component
     }
 }
 
-class Listitem extends React.Component{//component that invoke component
+class Listitem extends React.Component{ //component that invoke component
     render(){
         return(
             <ul>
